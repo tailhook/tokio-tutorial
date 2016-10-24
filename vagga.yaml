@@ -30,3 +30,4 @@ containers:
 
     environ:
       HOME: /work/target
+      USER: user
