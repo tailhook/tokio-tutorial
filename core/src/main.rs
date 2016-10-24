@@ -16,9 +16,8 @@ fn main() {
             Ok(())
         })
         .and_then(|_| Timeout::new(Duration::new(2, 0), &handle).unwrap())
-        .and_then(|_| {
+        .map(|_| {
             println!("world!");
-            Ok(())
         });
     core.run(future).unwrap();
 }

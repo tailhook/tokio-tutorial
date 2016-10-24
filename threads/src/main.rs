@@ -14,8 +14,7 @@ fn main() {
         tx.complete("Rust Belt");
     });
 
-    rx.and_then(|name| {
+    rx.map(|name| {
         println!("Hello {}!", name);
-        Ok(())
     }).wait().ok();
 }
