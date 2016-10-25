@@ -5,5 +5,10 @@ members = [
     "competing",
     "core",
     "stream",
+    "redis",
 ]
 
+[replace]
+"tokio-core:0.1.0" = { git="https://github.com/tokio-rs/tokio-core", rev="623ce44" }
+"tokio-proto:0.1.0" = { git="https://github.com/tokio-rs/tokio-proto", rev="ea7bfa2" }
+"tokio-service:0.1.0" = { git="https://github.com/tokio-rs/tokio-service", rev="92eccdc" }
