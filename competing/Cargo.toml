@@ -1,0 +1,8 @@
+[package]
+name = "competing"
+version = "0.1.0"
+authors = ["user"]
+
+[dependencies]
+futures = "0.1.2"
+rand = "0.3.14"

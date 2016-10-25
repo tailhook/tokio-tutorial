@@ -2,6 +2,7 @@
 members = [
     "bare",
     "threads",
+    "competing",
     "core",
     "stream",
 ]
