@@ -3,5 +3,6 @@ members = [
     "bare",
     "threads",
     "core",
+    "stream",
 ]
 
