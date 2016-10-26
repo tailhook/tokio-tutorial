@@ -31,7 +31,7 @@ pub fn main() {
 
     // The address to bind the listener socket to
     let addr = "127.0.0.1:7001".parse().unwrap();
-    let table = Mutex::new(HashMap::<Vec<u8>, Vec<u8>>::new());
+    let table = Mutex::new(HashMap::<_, Vec<u8>>::new());
 
     let service = simple_service(move |req: Request| {
         match req.get(0).map(|x| (x.as_slice(), req.len())) {
