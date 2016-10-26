@@ -1,5 +1,10 @@
 commands:
 
+  redis-cli: !Command
+    description: Run redis cli
+    container: redis
+    run: [redis-cli]
+
   make: !Command
     description: Build the library
     container: ubuntu
@@ -30,4 +35,10 @@ containers:
 
     environ:
       HOME: /work/target
+      RUST_BACKTRACE: 1
       USER: user
+
+  redis:
+    setup:
+    - !Alpine v3.4
+    - !Install [redis]
