@@ -30,7 +30,7 @@ pub fn main() {
     let mut lp = Core::new().unwrap();
 
     // The address to bind the listener socket to
-    let addr = "127.0.0.1:12345".parse().unwrap();
+    let addr = "127.0.0.1:7001".parse().unwrap();
     let table = Mutex::new(HashMap::<Vec<u8>, Vec<u8>>::new());
 
     let service = simple_service(move |req: Request| {

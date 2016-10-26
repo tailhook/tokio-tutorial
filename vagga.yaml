@@ -1,10 +1,5 @@
 commands:
 
-  redis-cli: !Command
-    description: Run redis cli
-    container: redis
-    run: [redis-cli]
-
   make: !Command
     description: Build the library
     container: ubuntu
@@ -19,6 +14,25 @@ commands:
     description: Run tests
     container: ubuntu
     run: [cargo, test]
+
+  redis-cli: !Command
+    description: Run redis cli
+    container: redis
+    run: [redis-cli]
+
+  redis-benchmark: !Command
+    description: Run redis benchmark
+    container: redis
+    run: [redis-benchmark]
+
+  redis-server: !Command
+    description: Run redis server
+    container: redis
+    run:
+    - redis-server
+    - --daemonize
+    - no
+    - --port 7002
 
 containers:
 
