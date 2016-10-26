@@ -68,6 +68,9 @@ impl RedisDeserialize {
 impl Parse for RedisDeserialize {
     type Out = Request;
     fn parse(&mut self, buf: &mut EasyBuf) -> Poll<Request, io::Error> {
+        if buf.len() == 0 {
+            return Ok(Async::NotReady);
+        }
 
         // Firstly we find out if we read all the parts of a request,
         // while storing only offsets of the data in the buffer
@@ -88,6 +91,7 @@ impl Parse for RedisDeserialize {
             result.push(buf.drain_to(size));
             cur = start + size;
         }
+        buf.drain_to(2); // remove first two bytes
         return Ok(Async::Ready(result));
     }
     fn done(&mut self, _buf: &mut EasyBuf) -> Result<Request, io::Error> {

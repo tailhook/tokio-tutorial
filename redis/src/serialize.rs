@@ -3,6 +3,7 @@ use tokio_core::easy::Serialize;
 
 pub struct RedisSerialize;
 
+#[derive(Debug)]
 pub enum Response {
     Okay,
     Bulk(Vec<u8>),

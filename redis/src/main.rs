@@ -32,8 +32,7 @@ pub fn main() {
     let addr = "127.0.0.1:12345".parse().unwrap();
 
     let service = simple_service(move |req: Request| {
-        println!("REQUEST of {} bulks", req.len());
-        finished::<_, io::Error>(Response::Okay)
+        Ok(Response::Okay)
     });
 
     // Create the new TCP listener
