@@ -44,9 +44,9 @@ impl RedisDeserialize {
             }
             let endline = data[offset..].iter().position(|&x| x == b'\n');
             let (bulk_size, noff) = if let Some(end) = endline {
-                let strdata = from_utf8(&data[offset..end]).ok();
+                let strdata = from_utf8(&data[offset+1..offset+end]).ok();
                 match strdata.and_then(|x| x.trim_right().parse().ok()) {
-                    Some(bulk_size) => (bulk_size, end+1),
+                    Some(bulk_size) => (bulk_size, offset+end+1),
                     None => return error("invalid bulk size"),
                 }
             } else {
