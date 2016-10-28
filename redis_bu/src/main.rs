@@ -58,13 +58,11 @@ pub fn main() {
     println!("Redis server running on {}", addr);
 
     let handle = lp.handle();
-    let srv = listener.incoming().for_each(|(socket, _addr)| {
-        handle.spawn(
-            pipeline::EasyServer::new(service.clone(),
-                 EasyFramed::new(socket, RedisDeserialize, RedisSerialize))
-            .map_err(|e| debug!("Connection error: {}", e)));
-        Ok(())
-    });
+    let srv = listener.incoming().map(|(socket, _addr)| {
+        pipeline::EasyServer::new(service.clone(),
+             EasyFramed::new(socket, RedisDeserialize, RedisSerialize))
+        .then(|_| Ok(()))  // must be always Ok() or it crashes
+    }).buffer_unordered(1000000).for_each(|()| Ok(()));
 
     lp.run(srv).unwrap();
 }

@@ -1,8 +1,14 @@
 [root]
-name = "threads"
+name = "redis"
 version = "0.1.0"
 dependencies = [
+ "env_logger 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "tokio-core 0.1.0 (git+https://github.com/tokio-rs/tokio-core?rev=623ce44)",
+ "tokio-proto 0.1.0 (git+https://github.com/tokio-rs/tokio-proto?rev=ea7bfa2)",
+ "tokio-service 0.1.0 (git+https://github.com/tokio-rs/tokio-service?rev=92eccdc)",
+ "void 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -38,28 +44,12 @@ version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "competing"
-version = "0.1.0"
-dependencies = [
- "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "rand 0.3.14 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "core"
-version = "0.1.0"
-dependencies = [
- "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "tokio-core 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "env_logger"
 version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "regex 0.1.79 (registry+https://github.com/rust-lang/crates.io-index)",
+ "regex 0.1.80 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -68,13 +58,6 @@ version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "futures1"
-version = "0.1.0"
-dependencies = [
- "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -170,46 +153,20 @@ dependencies = [
 ]
 
 [[package]]
-name = "redis"
-version = "0.1.0"
-dependencies = [
- "env_logger 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "tokio-core 0.1.0 (git+https://github.com/tokio-rs/tokio-core?rev=623ce44)",
- "tokio-proto 0.1.0 (git+https://github.com/tokio-rs/tokio-proto?rev=ea7bfa2)",
- "tokio-service 0.1.0 (git+https://github.com/tokio-rs/tokio-service?rev=92eccdc)",
- "void 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "redis_bu"
-version = "0.1.0"
-dependencies = [
- "env_logger 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "tokio-core 0.1.0 (git+https://github.com/tokio-rs/tokio-core?rev=623ce44)",
- "tokio-proto 0.1.0 (git+https://github.com/tokio-rs/tokio-proto?rev=ea7bfa2)",
- "tokio-service 0.1.0 (git+https://github.com/tokio-rs/tokio-service?rev=92eccdc)",
- "void 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "regex"
-version = "0.1.79"
+version = "0.1.80"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "aho-corasick 0.5.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "memchr 0.1.11 (registry+https://github.com/rust-lang/crates.io-index)",
- "regex-syntax 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)",
+ "regex-syntax 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)",
  "thread_local 0.2.7 (registry+https://github.com/rust-lang/crates.io-index)",
  "utf8-ranges 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "regex-syntax"
-version = "0.3.8"
+version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -239,14 +196,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "smallvec"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "stream"
-version = "0.1.0"
-dependencies = [
- "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "tokio-core 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
 [[package]]
 name = "take"
@@ -286,7 +235,13 @@ dependencies = [
 name = "tokio-core"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-replace = "tokio-core 0.1.0 (git+https://github.com/tokio-rs/tokio-core?rev=623ce44)"
+dependencies = [
+ "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "mio 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "scoped-tls 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "slab 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "tokio-proto"
@@ -308,7 +263,9 @@ dependencies = [
 name = "tokio-service"
 version = "0.1.0"
 source = "git+https://github.com/tokio-rs/tokio-service#92eccdc149111deb4d1b621effd2422976ed95e8"
-replace = "tokio-service 0.1.0 (git+https://github.com/tokio-rs/tokio-service?rev=92eccdc)"
+dependencies = [
+ "futures 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "tokio-service"
@@ -365,8 +322,8 @@ dependencies = [
 "checksum net2 0.2.26 (registry+https://github.com/rust-lang/crates.io-index)" = "5edf9cb6be97212423aed9413dd4729d62b370b5e1c571750e882cebbbc1e3e2"
 "checksum nix 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7a7bb1da2be7da3cbffda73fc681d509ffd9e665af478d2bee1907cee0bc64b2"
 "checksum rand 0.3.14 (registry+https://github.com/rust-lang/crates.io-index)" = "2791d88c6defac799c3f20d74f094ca33b9332612d9aef9078519c82e4fe04a5"
-"checksum regex 0.1.79 (registry+https://github.com/rust-lang/crates.io-index)" = "33afc849c34c7e9389435f5f2ac9bb0cc5eb69f137e9aa6e6b1ef0b2baab0226"
-"checksum regex-syntax 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)" = "01acf14447f3e18588a1f42ac1402c6c66e2204210f70bd5b7b5903ba8ba01d3"
+"checksum regex 0.1.80 (registry+https://github.com/rust-lang/crates.io-index)" = "4fd4ace6a8cf7860714a2c2280d6c1f7e6a413486c13298bbc86fd3da019402f"
+"checksum regex-syntax 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "f9ec002c35e86791825ed294b50008eea9ddfc8def4420124fbc6b08db834957"
 "checksum rustc_version 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)" = "c5f5376ea5e30ce23c03eb77cbe4962b988deead10910c372b226388b594c084"
 "checksum scoped-tls 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "f417c22df063e9450888a7561788e9bd46d3bb3c1466435b4eccb903807f147d"
 "checksum semver 0.1.20 (registry+https://github.com/rust-lang/crates.io-index)" = "d4f410fedcf71af0345d7607d246e7ad15faaadd49d240ee3b24e5dc21a820ac"
